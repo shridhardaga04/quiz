@@ -12,21 +12,18 @@ export default function Question(props) {
             .catch(error => console.log(error))
     }, [])
     
-
-    console.log({questions})
+    // console.log({questions})
+    
     let displayQ = []
-
-    if (questions) {
-        console.log("inside if")
-        displayQ = questions.map(item => {
+    displayQ = questions.map(item => {
         return (
             <DisplayQuestions
                 key = {item.question}
                 item={item}
             />
         )
-        })
-    }  
+    })
+     
 
     return (
         <div>
