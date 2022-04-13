@@ -6,7 +6,7 @@ export default function DisplayQuestions(props) {
     let l = incorrect.length
     let show = false
     if (l === 3) show = true
-    console.log()
+    console.log("show")
     return (
         <div className="quiz-container">
             <h3>{props.item.question}</h3>
