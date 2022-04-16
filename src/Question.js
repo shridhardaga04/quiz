@@ -4,6 +4,7 @@ import DisplayQuestions from "./DisplayQuestion"
 export default function Question(props) {
 
     const [questions, setQuestions] = React.useState([])
+    // const [score, setScore] = React.useState(0)
 
     React.useEffect(() => {
         fetch("https://opentdb.com/api.php?amount=5&category=18")
@@ -20,14 +21,20 @@ export default function Question(props) {
             <DisplayQuestions
                 key = {item.question}
                 item={item}
+                // score={score}
             />
         )
     })
      
+    // function submitAns(q){
+    //     console.log(q)
+    // }
 
     return (
-        <div>
+        <div className="quiz">
             {displayQ}
+            <button className="ca">Check Answers</button> {/*onClick = {submitAns(displayQ.key)}*/}
+            {/* <h1>{score}</h1> */}
             {/* <button className="btn" onClick={props.navigate}>Home</button> */}
         </div>
     )
