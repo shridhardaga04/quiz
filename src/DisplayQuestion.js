@@ -7,7 +7,9 @@ export default function DisplayQuestions(props) {
     // let correct = props.item.correct_answer
     // let [score, setScore] = React.useState(0)
     // let score = 0
-    let [selectedOptions, setSelectedOptions] = React.useState([])
+    const [optionData, setOptionData] = React.useState({
+        selectedOptions:[]
+    })
 
     if(! incorrect.includes(props.item.correct_answer))
         incorrect.push(props.item.correct_answer) 
@@ -18,34 +20,42 @@ export default function DisplayQuestions(props) {
     // let [options, setOptions] = React.useState([])
     
     const [clicked, setClicked] = React.useState(false)
+    
     // let clicked = false
     
-    function optClick(opt){
-        console.log(opt)
-        // console.log(correct)
-        setSelectedOptions(prevSelectedOptions => prevSelectedOptions.push(opt)) //Not working!!
-        
-        setClicked(!clicked)
-        // clicked = true
-        // if (opt === correct)
-        //     setScore(prevScore => prevScore += 1)
-        console.log({ selectedOptions }) // here showing diff o/p
-    }
-    console.log({ selectedOptions })  // Here  showing diff o/p
+    // const optClick = (opt) => {
+    //     console.log(opt)
+    //     // console.log(correct)
 
+    //     let res = []
+    //     res.push(opt)
+
+    //     // setSelectedOptions([...selectedOptions, opt]) //Not working!!
+    //     // setSelectedOptions(prevVal => [...prevVal, opt])
+    //     setOptionData((prevOptionData)=>({
+    //         selectedOptions:[...prevOptionData.selectedOptions,opt]
+    //     }))
+    //     console.log(res)
+    //     // setClicked(!clicked)
+        
+    //     // here showing diff o/p    
+    // }
+    
     // TO decide how many options will be there 2/4
-        let dispOpt = incorrect.map(item => {   
-            // console.log(item) 
+        let dispOpt = incorrect.map(item => {  
+            console.log(item) 
             return(
                 <DisplayOptions 
                     key={item}
                     id={item} 
                     item = {item}
-                    onClick={optClick}
+                    onClick={()=>setOptionData({selectedOptions:[...optionData.selectedOptions,item.id
+                    ]})}
                     clicked = {clicked}
                 />
             )
         })
+console.log(optionData.selectedOptions);
         return (
         <div className="quiz-container">
             <h3 className="ques">{props.item.question}</h3>
