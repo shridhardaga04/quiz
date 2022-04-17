@@ -7,7 +7,7 @@ export default function Question(props) {
     // const [score, setScore] = React.useState(0)
 
     React.useEffect(() => {
-        fetch("https://opentdb.com/api.php?amount=5&category=18")
+        fetch("https://opentdb.com/api.php?amount=5&category=17&difficulty=easy")
             .then(res => res.json())
             .then(data => setQuestions(data.results))
             .catch(error => console.log(error))
