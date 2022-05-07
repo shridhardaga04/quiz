@@ -13,8 +13,6 @@ export default function Question(props) {
             .catch(error => console.log(error))
     }, [])
     
-    // console.log({questions})
-    
     let displayQ = []
     displayQ = questions.map(item => {
         return (
@@ -26,9 +24,6 @@ export default function Question(props) {
         )
     })
      
-    // function submitAns(q){
-    //     console.log(q)
-    // }
 
     return (
         <div className="quiz">
