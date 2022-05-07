@@ -1,19 +1,42 @@
 import React from "react"
+import DisplayOptions from "./DisplayOptions";
 
 export default function DisplayQuestions(props) {
 
-    const incorrect = props.item.incorrect_answers
-    let l = incorrect.length
-    let show = false
-    if (l === 3) show = true
-    console.log()
-    return (
+    let incorrect = props.item.incorrect_answers
+    
+    const [optionData, setOptionData] = React.useState()
+
+    if(! incorrect.includes(props.item.correct_answer))
+        incorrect.push(props.item.correct_answer) 
+    
+    incorrect.sort(); // to shuffle the options
+    
+    const optClick = (opt) => {
+        console.log(opt)   
+    }
+    
+    // TO decide how many options will be there 2/4
+        let dispOpt = incorrect.map(item => {  
+            return(
+                <DisplayOptions 
+                    key={item}
+                    id={item} 
+                    item = {item}
+                    onClick={optClick}
+                    // clicked = {clicked}
+                />
+            )
+        })
+        
+        // Adding Quesions and Options component
+        return (
         <div className="quiz-container">
-            <h3>{props.item.question}</h3>
-            <button className="option">{props.item.incorrect_answers[0]}</button>
-            <button className="option">{props.item.correct_answer}</button>
-            <button className="option">{props.item.incorrect_answers[2]}</button>
-            <button className="option">{props.item.incorrect_answers[1]}</button>
+            <h3 className="ques">{props.item.question}</h3>
+            {dispOpt}
+            <hr></hr>
+            {/* {selectedOptions} */}
         </div>
+        
     )
 }
