@@ -1,8 +1,8 @@
 
 import './App.css';
 import Intro from './Intro.js'
-import Question from './Question';
 import React from "react"
+import Quiz from './Quiz';
 
 export default function App() {
 
@@ -15,7 +15,7 @@ export default function App() {
     return (
     <div className="App">
         {!nextPage &&<Intro navigate={() => navigate()} />}
-        {nextPage && <Question navigate={() => navigate()} />}
+        {nextPage && <Quiz navigate={() => navigate()} />}
     </div>
   );
 }
